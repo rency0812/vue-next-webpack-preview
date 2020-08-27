@@ -41,6 +41,10 @@ module.exports = (env = {}) => ({
           },
           'css-loader'
         ]
+      },
+      {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader'
       }
     ]
   },

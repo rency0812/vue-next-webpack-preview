@@ -61,9 +61,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .root {
   text-align: center;
+  button{
+    box-shadow: 0 0 3px #000;
+  }
 }
 img {
   width: 200px;
