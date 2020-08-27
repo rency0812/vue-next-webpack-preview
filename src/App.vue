@@ -5,14 +5,26 @@
     <p v-for="v in 3" :key="v">{{v}}</p>
     <h4 ref="h4">{{num}}</h4>
     <button @click="inc">Clicked {{ count }} times.</button>
+    <Child @childEvent="childEvent"/>
   </div>
 </template>
 
 <script>
 import { ref, onBeforeMount, watch, watchEffect, reactive, onMounted } from 'vue'
+import Child from './compents/Child.vue'
 
 export default {
-  setup() {
+  components: {
+    Child
+  },
+  emits: {
+    childEvent (val) {
+      console.log(val)
+      return true
+    }
+  },
+  setup(props, context) {
+    console.log(context)
     const count = ref(0)
     const num = ref(1)
     const datas = reactive({
@@ -31,6 +43,11 @@ export default {
       console.log('afterMount')
     }
     const h4 = ref(null)
+
+    const childEvent = (val) => {
+      console.log(val)
+      return true
+    }
 
     onBeforeMount(() => {
       initTem()
@@ -55,6 +72,7 @@ export default {
       count,
       num,
       h4,
+      childEvent,
       inc
     }
   }
