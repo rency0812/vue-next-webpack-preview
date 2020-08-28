@@ -4,6 +4,7 @@
     <h1>Hello Vue 3!</h1>
     <p v-for="v in 3" :key="v">{{v}}</p>
     <h4 ref="h4">{{num}}</h4>
+    <input type="text" v-model="count">
     <button @click="inc">Clicked {{ count }} times.</button>
     <Child @childEvent="childEvent"/>
   </div>
@@ -12,6 +13,7 @@
 <script>
 import { ref, onBeforeMount, watch, watchEffect, reactive, onMounted } from 'vue'
 import Child from './compents/Child.vue'
+import axios from 'axios'
 
 export default {
   components: {
@@ -24,6 +26,14 @@ export default {
     }
   },
   setup(props, context) {
+    // const formData = new FormData()
+    const formData = 'name=renl'
+    // formData.append('name', 'renl')
+    axios({
+      url: '/user/12345',
+      method: 'post',
+      data: formData
+    })
     console.log(context)
     const count = ref(0)
     const num = ref(1)
