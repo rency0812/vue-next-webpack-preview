@@ -26,6 +26,7 @@ export default {
     }
   },
   setup(props, context) {
+    // 不需要修改content-type, axios会根据data数据格式自动添加
     // const formData = new FormData()
     const formData = 'name=renl'
     // formData.append('name', 'renl')
